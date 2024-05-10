@@ -25,6 +25,20 @@ module.exports = function (connection) {
             type: Sequelize.DataTypes.JSON,
             defaultValue: []
         },
+        coordinates: {
+            type: Sequelize.DataTypes.JSON
+        },
+        contactNo: {
+            type: Sequelize.DataTypes.BIGINT
+        },
+        email: { 
+            type: Sequelize.DataTypes.STRING, 
+            unique: true, 
+            allowNull: false
+        },
+        socialLinks : {
+            type: Sequelize.DataTypes.JSON
+        }
     }, {
         timestamps: false
     });

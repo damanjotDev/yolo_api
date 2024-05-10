@@ -22,7 +22,10 @@ let routes = [
                 description: Joi.string().required(),
 				images: Joi.array().items(Joi.object()).default([]),
                 awards: Joi.array().items(Joi.object()).default([]),
-
+				coordinates: Joi.array().items(Joi.object()).default([]),
+				socialLinks: Joi.array().items(Joi.object()).default([]),
+				contactNo: Joi.number().optional(),
+				email: Joi.string().email({ tlds: { allow: false } }).optional()
 			},
 			group: 'Abouts',
 			description: `Route to create a about.`,
@@ -79,10 +82,14 @@ let routes = [
 				'authorization': Joi.string().required().description('User\'s token.')
 			},
 			body: {
+				email: Joi.string().email({ tlds: { allow: false } }).optional(),
 				title: Joi.string().optional(),
                 description: Joi.string().optional(),
 				images: Joi.array().items(Joi.object()).optional(),
                 awards: Joi.array().items(Joi.object()).optional(),
+				coordinates: Joi.array().items(Joi.object()).optional(),
+				socialLinks: Joi.array().items(Joi.object()).optional(),
+				contactNo: Joi.number().optional()
 			},
 			params: {
 				id: Joi.number().integer().required().description('User Id'),
