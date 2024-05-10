@@ -77,8 +77,8 @@ roomReviewService.getRoomReviews = async (payload) => {
      */
     if(payload?.title) {filter['title'] = payload?.title;}
     if(payload?.rating) {filter['rating'] = payload?.rating;}
-    if(payload?.userId) {filter['user_id'] = payload?.userId;}
-    if(payload?.roomId) {filter['room_id'] = payload?.roomId;}
+    if(payload?.user_id) {filter['user_id'] = payload?.user_id;}
+    if(payload?.room_id) {filter['room_id'] = payload?.room_id;}
     if(filter) {
         query["where"] = filter;
     }

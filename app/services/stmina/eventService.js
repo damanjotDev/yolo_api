@@ -65,7 +65,7 @@ eventService.getEvents = async (payload) => {
      * filter section start
      */
     if(payload?.title) {filter['title'] = payload?.title;}
-    if(payload?.eventType) {filter['event_type'] = payload?.eventType;}
+    if(payload?.eventType) {filter['eventType'] = payload?.eventType;}
     if(filter) {
         query["where"] = filter;
     }

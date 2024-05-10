@@ -66,6 +66,8 @@ reviewService.getReviews = async (payload) => {
      * filter section start
      */
     if(payload?.title) {filter['title'] = payload?.title;}
+    if(payload?.rating) {filter['rating'] = payload?.rating;}
+    if(payload?.user_id) {filter['user_id'] = payload?.user_id;}
     if(filter) {
         query["where"] = filter;
     }

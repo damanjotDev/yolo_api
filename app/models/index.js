@@ -61,9 +61,6 @@ let models = {
 models.propertyModel.hasMany(models.roomModel, { foreignKey: 'property_id'});
 models.roomModel.belongsTo(models.propertyModel, { foreignKey: 'property_id' });
 
-models.serviceModel.hasMany(models.roomModel, { foreignKey: 'service_id'});
-models.roomModel.belongsTo(models.serviceModel, { foreignKey: 'service_id' })
-
 //----------------------------------------------------reviewModel relation
 models.reviewModel.belongsTo(models.userModel, { foreignKey: 'user_id' })
 

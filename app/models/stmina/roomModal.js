@@ -37,7 +37,7 @@ module.exports = function (connection) {
         bedType: {
             type: Sequelize.DataTypes.STRING,
             values: [...Object.values(ROOM_BED_TYPE)],
-            defaultValue: ROOM_BED_TYPE.Double
+            allowNull: false
         },
         roomArea: {
             type: Sequelize.DataTypes.INTEGER,
@@ -51,13 +51,10 @@ module.exports = function (connection) {
             type: Sequelize.DataTypes.JSON,
             allowNull: false
         },
-        service_id: {
-            type: Sequelize.DataTypes.INTEGER,
-            references: {
-                model: 'services',
-                key: 'id'
-            },
+        service_ids: {
+            type: Sequelize.DataTypes.JSON,
             allowNull: false,
+            defaultValue: []
         },
         property_id: {
             type: Sequelize.DataTypes.INTEGER,

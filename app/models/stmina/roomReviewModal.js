@@ -20,7 +20,6 @@ module.exports = function (connection) {
         },
         description: {
             type: Sequelize.DataTypes.STRING,
-            allowNull: false,
         },
         room_id: {
             type: Sequelize.DataTypes.INTEGER,

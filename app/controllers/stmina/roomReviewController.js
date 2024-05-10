@@ -57,7 +57,7 @@ roomReviewController.removeRoomReview = async (payload) => {
         { data: roomReview });
 };
 
-roomReviewController.getroomReviews = async (payload) => {
+roomReviewController.getRoomReviews = async (payload) => {
     const roomReview = await roomReviewService.getRoomReviews({ id: payload.id });
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS

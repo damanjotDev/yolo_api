@@ -18,7 +18,7 @@ module.exports = function (connection) {
             type: Sequelize.DataTypes.JSON,
             defaultValue: []
         },
-        event_type: {
+        eventType: {
             type: Sequelize.DataTypes.STRING,
             values: [...Object.values(EVENT_TYPE)],
             defaultValue: EVENT_TYPE.EVENT

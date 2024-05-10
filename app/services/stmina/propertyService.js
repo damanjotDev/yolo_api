@@ -65,6 +65,7 @@ propertyService.getProperties = async (payload) => {
      * filter section start
      */
     if(payload?.email) {filter['email'] = payload?.email;}
+    if(payload?.title) {filter['title'] = payload?.title;}
     if(filter) {
         query["where"] = filter;
     }

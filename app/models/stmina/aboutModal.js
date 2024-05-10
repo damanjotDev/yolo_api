@@ -13,7 +13,10 @@ module.exports = function (connection) {
             type: Sequelize.DataTypes.STRING,
             allowNull: false,
         },
-        
+        description: {
+            type: Sequelize.DataTypes.STRING,
+            allowNull: false,
+        },
         images: {
             type: Sequelize.DataTypes.JSON,
             defaultValue: []

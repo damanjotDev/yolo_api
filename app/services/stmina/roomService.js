@@ -76,10 +76,10 @@ roomService.getRooms = async (payload) => {
      * filter section start
      */
     if(payload?.title) {filter['title'] = payload?.title;}
-    if(payload?.price) {filter['price'] = payload?.rating;}
-    if(payload?.bedType) {filter['bedType'] = payload?.roomId;}
-    if(payload?.serviceId) {filter['service_id'] = payload?.userId;}
-    if(payload?.propertyId) {filter['property_id'] = payload?.roomId;}
+    if(payload?.price) {filter['price'] = payload?.price;}
+    if(payload?.bedType) {filter['bedType'] = payload?.bedType;}
+    // if(payload?.service_id) {filter['service_id'] = payload?.service_id;}
+    if (payload?.property_id) {filter['property_id'] = payload?.property_id;}
     if(filter) {
         query["where"] = filter;
     }
