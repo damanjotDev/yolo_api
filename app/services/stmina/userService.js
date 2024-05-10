@@ -45,19 +45,12 @@ userService.getUser = async (criteria) => {
  * function to update User data in the database.
  */
 userService.updateUser = async (criteria, payload) => {
-   
-    const transaction = await global.dbConnection.transaction();
     try {
-        let user = await userModel.update(payload, { where: criteria, transaction: transaction });
-      
+        await userModel.update(payload, { where: criteria});
+        let user = userModel.findOne({where: criteria});
         // commit
-        await transaction.commit();
         return user;
     } catch (err) {
-        // Rollback transaction only if the transaction object is defined
-        if (transaction) {
-            await transaction.rollback()
-        };
         throw err;
     }
 };

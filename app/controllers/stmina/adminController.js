@@ -1,7 +1,12 @@
 "use strict";
 
 const CONFIG = require('../../../config');
-const HELPERS = require("../../helpers");
+const {
+    responseHelper:{
+        createSuccessResponse,
+        createErrorResponse
+    }
+} = require("../../helpers");
 const CONSTANTS = require('../../utils/constants');
 const SERVICES = require('../../services');
 const utils = require(`../../utils/utils`);
@@ -35,7 +40,7 @@ adminController.login = async (payload) => {
     
         // if user doesn't exist 
         if (!user) {
-            return HELPERS.responseHelper.createErrorResponse(CONSTANTS.MESSAGES.INVALID_CREDENTIALS, CONSTANTS.ERROR_TYPES.BAD_REQUEST)
+            return createErrorResponse(CONSTANTS.MESSAGES.INVALID_CREDENTIALS, CONSTANTS.ERROR_TYPES.BAD_REQUEST)
         }
     
     
@@ -51,9 +56,9 @@ adminController.login = async (payload) => {
                 role: user.role
             };
     
-            return Object.assign(HELPERS.responseHelper.createSuccessResponse(CONSTANTS.MESSAGES.LOGGED_IN_SUCCESSFULLY), { data: { accessToken, ...userData, role: user.role } });
+            return Object.assign(createSuccessResponse(CONSTANTS.MESSAGES.LOGGED_IN_SUCCESSFULLY), { data: { accessToken, ...userData, role: user.role } });
         } else {
-            return Object.assign(HELPERS.responseHelper.createErrorResponse(CONSTANTS.MESSAGES.INVALID_CREDENTIALS, CONSTANTS.ERROR_TYPES.BAD_REQUEST))
+            return Object.assign(createErrorResponse(CONSTANTS.MESSAGES.INVALID_CREDENTIALS, CONSTANTS.ERROR_TYPES.BAD_REQUEST))
         }
     } catch (e) {
         console.log(e);
@@ -61,7 +66,7 @@ adminController.login = async (payload) => {
 }
 
 adminController.getUsers = async (payload) => {
-    const user = await adminService.getUsers({ id: payload.id });
+    const user = await adminService.getUsers(payload);
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 

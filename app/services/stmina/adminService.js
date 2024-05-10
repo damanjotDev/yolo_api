@@ -34,7 +34,7 @@ adminService.getUsers = async (payload) => {
      */
     if(payload?.name) {filter['name'] = payload?.name;}
     if(payload?.email) {filter['email'] = payload?.email;}
-    if(!payload?.status) {
+    if(payload?.status) {
         filter['status'] = payload?.status
     }
     if(filter) {

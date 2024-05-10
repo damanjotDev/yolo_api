@@ -30,7 +30,7 @@ userController.login = async (payload) => {
     
         // if user doesn't exist 
         if (!user) {
-            return HELPERS.responseHelper.createErrorResponse(CONSTANTS.MESSAGES.INVALID_CREDENTIALS, CONSTANTS.ERROR_TYPES.BAD_REQUEST)
+            return createErrorResponse(CONSTANTS.MESSAGES.INVALID_CREDENTIALS, CONSTANTS.ERROR_TYPES.BAD_REQUEST)
         }
     
     
@@ -46,9 +46,9 @@ userController.login = async (payload) => {
                 role: user.role
             };
     
-            return Object.assign(HELPERS.responseHelper.createSuccessResponse(CONSTANTS.MESSAGES.LOGGED_IN_SUCCESSFULLY), { data: { accessToken, ...userData, role: user.role } });
+            return Object.assign(createSuccessResponse(CONSTANTS.MESSAGES.LOGGED_IN_SUCCESSFULLY), { data: { accessToken, ...userData, role: user.role } });
         } else {
-            return Object.assign(HELPERS.responseHelper.createErrorResponse(CONSTANTS.MESSAGES.INVALID_CREDENTIALS, CONSTANTS.ERROR_TYPES.BAD_REQUEST))
+            return Object.assign(createErrorResponse(CONSTANTS.MESSAGES.INVALID_CREDENTIALS, CONSTANTS.ERROR_TYPES.BAD_REQUEST))
         }
     } catch (e) {
         console.log(e);
@@ -82,6 +82,7 @@ userController.updateUser = async (payload) => {
     try {
         let criteria = { id : payload.id };
         const user = await userService.updateUser(criteria,payload);
+
         return Object.assign(createSuccessResponse(
             CONSTANTS.MESSAGES.SUCCESS
             ), 
@@ -94,6 +95,14 @@ userController.updateUser = async (payload) => {
 userController.removeUser = async (payload) => {
     let criteria = { id : payload.id };
     const user = await userService.removeUser(criteria);
+    return Object.assign(createSuccessResponse(
+        CONSTANTS.MESSAGES.SUCCESS
+        ), 
+        { data: user });
+};
+
+userController.forgotPassword = async (payload) => {
+    const user = await userService.forgotPassword(payload);
     return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 

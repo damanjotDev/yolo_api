@@ -1,6 +1,6 @@
 'use strict';
 const jwt = require('jsonwebtoken');
-const { MESSAGES, ERROR_TYPES, SECURITY   } = require('../../utils/constants');
+const { MESSAGES, ERROR_TYPES, SECURITY, AVAILABLE_AUTHS   } = require('../../utils/constants');
 const HELPERS = require("../../helpers");
 const sessionService = require(`./sessionService`);
 const adminService = require('./adminService');
@@ -121,18 +121,24 @@ authService.adminValidate = (userRoles = []) => {
 let validateAdmin = async (request) => {
     try {
         let decodedToken = jwt.verify(request.headers.authorization, SECURITY.JWT_SIGN_KEY);
-        let query = {
-            where: {id: decodedToken.userId, role: decodedToken.role},
-            attributes: ['id','email'],
-            raw: true
-        };
-        let authenticatedUser = await MODELS.userModel.findOne(query);
 
-        if (authenticatedUser) {
-            request.user = authenticatedUser;
-            return true;
+        if(decodedToken.role===AVAILABLE_AUTHS.SUPER_ADMIN){
+            let query = {
+                where: {id: decodedToken.userId, role: decodedToken.role},
+                attributes: ['id','email'],
+                raw: true
+            };
+            let authenticatedUser = await MODELS.userModel.findOne(query);
+    
+            if (authenticatedUser) {
+                request.user = authenticatedUser;
+                return true;
+            }
+            return false;
         }
-        return false;
+        else{
+            return false
+        }
     } catch (err) {
         return false;
     }
