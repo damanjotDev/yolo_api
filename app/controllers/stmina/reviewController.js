@@ -51,7 +51,7 @@ reviewController.updateReview = async (payload) => {
 reviewController.removeReview = async (payload) => {
     let criteria = { id : payload.id };
     const review = await reviewService.removeReview(criteria);
-    return review.assign(createSuccessResponse(
+    return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
         { data: review });

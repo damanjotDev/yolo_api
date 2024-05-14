@@ -51,7 +51,7 @@ aboutController.updateAbout = async (payload) => {
 aboutController.removeAbout = async (payload) => {
     let criteria = { id : payload.id };
     const about = await aboutService.removeAbout(criteria);
-    return about.assign(createSuccessResponse(
+    return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
         { data: about });

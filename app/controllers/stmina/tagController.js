@@ -51,7 +51,7 @@ tagController.updateTag = async (payload) => {
 tagController.removeTag = async (payload) => {
     let criteria = { id : payload.id };
     const tag = await tagService.removeTag(criteria);
-    return tag.assign(createSuccessResponse(
+    return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
         { data: tag });

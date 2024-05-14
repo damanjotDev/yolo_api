@@ -51,7 +51,7 @@ categoryController.updateCategory = async (payload) => {
 categoryController.removeCategory = async (payload) => {
     let criteria = { id : payload.id };
     const category = await categoryService.removeCategory(criteria);
-    return category.assign(createSuccessResponse(
+    return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
         { data: category });

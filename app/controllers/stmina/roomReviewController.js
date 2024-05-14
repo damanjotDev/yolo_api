@@ -51,7 +51,7 @@ roomReviewController.updateRoomReview = async (payload) => {
 roomReviewController.removeRoomReview = async (payload) => {
     let criteria = { id : payload.id };
     const roomReview = await roomReviewService.removeRoomReview(criteria);
-    return roomReview.assign(createSuccessResponse(
+    return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
         { data: roomReview });

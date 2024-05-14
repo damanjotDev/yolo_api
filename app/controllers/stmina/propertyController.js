@@ -51,7 +51,7 @@ propertyController.updateProperty = async (payload) => {
 propertyController.removeProperty = async (payload) => {
     let criteria = { id : payload.id };
     const property = await propertyService.removeProperty(criteria);
-    return property.assign(createSuccessResponse(
+    return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
         { data: property });

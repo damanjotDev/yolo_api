@@ -51,7 +51,7 @@ eventController.updateEvent = async (payload) => {
 eventController.removeEvent = async (payload) => {
     let criteria = { id : payload.id };
     const event = await eventService.removeEvent(criteria);
-    return event.assign(createSuccessResponse(
+    return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
         { data: event });

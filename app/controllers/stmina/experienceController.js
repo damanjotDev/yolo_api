@@ -51,7 +51,7 @@ experienceController.updateExperience = async (payload) => {
 experienceController.removeExperience = async (payload) => {
     let criteria = { id : payload.id };
     const experience = await experienceService.removeExperience(criteria);
-    return experience.assign(createSuccessResponse(
+    return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
         { data: experience });

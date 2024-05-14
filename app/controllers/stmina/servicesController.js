@@ -51,7 +51,7 @@ servicesController.updateService = async (payload) => {
 servicesController.removeService = async (payload) => {
     let criteria = { id : payload.id };
     const Service = await servicesService.removeService(criteria);
-    return Service.assign(createSuccessResponse(
+    return Object.assign(createSuccessResponse(
         CONSTANTS.MESSAGES.SUCCESS
         ), 
         { data: Service });
