@@ -19,7 +19,7 @@ module.exports = function (connection) {
             defaultValue: 1
         },
         description: {
-            type: Sequelize.DataTypes.STRING,
+            type: Sequelize.DataTypes.TEXT,
         },
         room_id: {
             type: Sequelize.DataTypes.INTEGER,

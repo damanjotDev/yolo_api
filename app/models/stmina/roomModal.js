@@ -44,7 +44,7 @@ module.exports = function (connection) {
             allowNull: false
         },
         description: {
-            type: Sequelize.DataTypes.STRING,
+            type: Sequelize.DataTypes.TEXT,
             allowNull: false,
         },
         coordinates: {

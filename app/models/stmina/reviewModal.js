@@ -20,7 +20,7 @@ module.exports = function (connection) {
             defaultValue: 1
         },
         description: {
-            type: Sequelize.DataTypes.STRING,
+            type: Sequelize.DataTypes.TEXT,
             allowNull: false,
         },
         user_id: {

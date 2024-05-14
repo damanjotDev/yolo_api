@@ -14,16 +14,16 @@ module.exports = function (connection) {
             type: Sequelize.DataTypes.STRING,
             allowNull: false
         },
-        imageUrl: {
-            type: Sequelize.DataTypes.STRING,
-            defaultValue: null
+        images: {
+            type: Sequelize.DataTypes.JSON,
+            defaultValue: []
         },
-        iconUrl: {
-            type: Sequelize.DataTypes.STRING,
-            defaultValue: null
+        icons: {
+            type: Sequelize.DataTypes.JSON,
+            defaultValue: []
         },
         description: {
-            type: Sequelize.DataTypes.STRING,
+            type: Sequelize.DataTypes.TEXT,
             allowNull: false,
         }
     }, {

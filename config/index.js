@@ -90,9 +90,10 @@ var defaults = {
         PORT: process.env.REDIS_PORT || '6379',
         HOST: process.env.REDIS_HOST || '127.0.0.1'
     },
-    PATH_TO_UPLOAD_FILES_ON_LOCAL: process.env.PATH_TO_UPLOAD_FILES_ON_LOCAL || '/uploads/profilePics',
+    PATH_TO_UPLOAD_FILES_ON_LOCAL: process.env.PATH_TO_UPLOAD_FILES_ON_LOCAL || '/uploads/images',
     PATH_TO_TEMP_FILES: process.env.PATH_TO_TEMP_FILES || '/uploads/tempFiles',
-    MONGO_URL: process.env.MONGO_URL || 'mongodb://localhost:27017/sleepAnalysis'
+    MONGO_URL: process.env.MONGO_URL || 'mongodb://localhost:27017/sleepAnalysis',
+    BASE_API_URL: process.env.BASE_API_URL || 'http://localhost:3000'
 };
 
 let currentEnvironment = process.env.NODE_ENV || 'production';

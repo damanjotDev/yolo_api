@@ -19,8 +19,8 @@ let routes = [
 		joiSchemaForSwagger: {
 			body: {
 				title: Joi.string().required(),
-				imageUrl: Joi.string().required(),
-				iconUrl: Joi.string().required(),
+				images: Joi.array().items(Joi.object()).default([]),
+				icons: Joi.array().items(Joi.object()).default([]),
 				description: Joi.string().required(),
 			},
 			group: 'services',
