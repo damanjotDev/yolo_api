@@ -24,7 +24,7 @@ module.exports = function (connection) {
             defaultValue: []
         },
         description: {
-            type: Sequelize.DataTypes.TEXT,
+            type: Sequelize.DataTypes.STRING,
             allowNull: false,
         },
         coordinates: {
@@ -36,7 +36,7 @@ module.exports = function (connection) {
             allowNull: false
         },
     }, {
-        timestamps: false
+        timestamps: true
     });
 
     return properties;

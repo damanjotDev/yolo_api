@@ -21,7 +21,7 @@ let routes = [
 			body: {
 				name: Joi.string().required(),
 				status: Joi.string().default('active'),
-                imageUrl: Joi.string().default(null),
+                image: Joi.object().optional(),
 				email: Joi.string().email({ tlds: { allow: false } }),
 				password: Joi.string().required().description("password for user login")
 			},
@@ -45,7 +45,7 @@ let routes = [
 				status: Joi.valid(...Object.values(TYPE)).optional().description('if check show hidden users'),
 				// common fields
 				page: Joi.number().min(1).optional().description('Page number starting with 1'),
-				pageSize: Joi.number().optional().default(10).description('page size'),
+				pageSize: Joi.number().optional().description('page size'),
 				field: Joi.string().default('createdAt').optional().description('field Name'),
 				order: Joi.string().default('ASC').optional().valid(...Object.values(ORDER)).description('ASC | DESC'),
 			},
@@ -84,7 +84,7 @@ let routes = [
 			},
 			body: {
 				name: Joi.string().optional(),
-				imageUrl: Joi.string().optional()
+				image: Joi.object().optional()
 			},
 			params: {
 				id: Joi.number().integer().required().description('User Id'),

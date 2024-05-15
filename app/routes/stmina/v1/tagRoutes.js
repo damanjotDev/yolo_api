@@ -38,7 +38,7 @@ let routes = [
 				title: Joi.string().optional(),
 				// common fields
 				page: Joi.number().min(1).optional().description('Page number starting with 1'),
-				pageSize: Joi.number().optional().default(10).description('page size'),
+				pageSize: Joi.number().optional().description('page size'),
 				field: Joi.string().default('createdAt').optional().description('field Name'),
 				order: Joi.string().default('ASC').optional().valid(...Object.values(ORDER)).description('ASC | DESC'),
 			},

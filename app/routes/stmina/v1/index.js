@@ -14,7 +14,8 @@ let v1Routes = [
     ...require('./propertyRoutes'),
     ...require('./reviewRoutes'),
     ...require('./roomRoutes'),
-    ...require('./servicesRoutes')
+    ...require('./servicesRoutes'),
+    ...require('./tagRoutes')
 ]
 
 module.exports = v1Routes;

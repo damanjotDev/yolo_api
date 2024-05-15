@@ -24,7 +24,7 @@ module.exports = function (connection) {
             defaultValue: EVENT_TYPE.EVENT
         },
     }, {
-        timestamps: false
+        timestamps: true
     });
 
     return events;
