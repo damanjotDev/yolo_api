@@ -65,7 +65,7 @@ module.exports = function (connection) {
             allowNull: false,
         },
     }, {
-        timestamps: false
+        timestamps: true
     });
 
     return rooms;

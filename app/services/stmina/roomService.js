@@ -29,18 +29,21 @@ roomService.createRoom = async (payload) => {
  * @returns 
  */
 roomService.getRoom = async (criteria) => {
-    return await roomModel.findOne({ 
+    const room  =  await roomModel.findOne({ 
         where: criteria, 
         include: [
-            {
-                 model: serviceModel,
-                 as: 'service'
-            },
             {
                 model: propertyModel,
                 as: 'property'
             }
         ]})
+
+    if(room){
+        const services = await serviceModel.findAll({where: {id: room?.service_ids}})
+        room['services'] = services;
+    }
+
+    return room
 };
 
 /**
@@ -100,18 +103,26 @@ roomService.getRooms = async (payload) => {
 
     query['include'] = [
         {
-            model: serviceModel,
-            as: 'service'
-       },
-       {
-           model: propertyModel,
-           as: 'property'
-       }
+            model: propertyModel,
+            as: 'property'
+        }
     ]
 
     query['raw'] = true;
     query['distinct']= true
-    return await roomModel.findAndCountAll(query);
+    const rooms = await roomModel.findAndCountAll(query);
+    
+    const newRoomsWithServiceData = []
+    for(let i =0; i<rooms?.rows?.length; i++){
+        let object = rooms?.rows[i];
+        const services = await serviceModel.findAll({where: {id: object?.service_ids}})
+        object['services'] = services;
+
+        newRoomsWithServiceData.push(object)
+    }
+
+    rooms.rows = newRoomsWithServiceData;
+    return rooms
 };
 
 
