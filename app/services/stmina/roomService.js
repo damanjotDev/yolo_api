@@ -116,7 +116,7 @@ roomService.getRooms = async (payload) => {
     for(let i =0; i<rooms?.rows?.length; i++){
         let object = rooms?.rows[i];
         const services = await serviceModel.findAll({where: {id: object?.service_ids}})
-        object['services'] = services;
+        object['service'] = services;
 
         newRoomsWithServiceData.push(object)
     }
