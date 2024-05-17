@@ -53,8 +53,8 @@ Thumbs.db
 
 # build files
 
-swagger.json
 package-lock.json
 
 # environment file
 .env
+.vercel

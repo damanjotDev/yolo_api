@@ -21,9 +21,9 @@ module.exports = function (connection) {
         description: {
             type: Sequelize.DataTypes.TEXT,
             allowNull: false,
-        }
+        },
     }, {
-        timestamps: false
+        timestamps: true
     });
 
     return experiences;

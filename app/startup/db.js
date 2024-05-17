@@ -3,10 +3,12 @@
 const { Sequelize } = require('sequelize');
 const CONFIG = require('../../config');
 const dbUtils = require('../utils/dbUtils');
+const mysql2 = require('mysql2');
 
 const connection = new Sequelize(CONFIG.SQL.DB_NAME, CONFIG.SQL.USERNAME, CONFIG.SQL.PASSWORD, {
 	host: CONFIG.SQL.HOST,
 	dialect: "mysql",
+	dialectModule: mysql2,
 	logging: false,
 	dialectOptions: {
 		connectTimeout: 60000

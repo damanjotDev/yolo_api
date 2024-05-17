@@ -37,10 +37,15 @@ module.exports = function (connection) {
             allowNull: false
         },
         socialLinks : {
-            type: Sequelize.DataTypes.JSON
+            type: Sequelize.DataTypes.JSON,
+            defaultValue: []
+        },
+        isCover: {
+            type: Sequelize.DataTypes.BOOLEAN,
+            defaultValue: false
         }
     }, {
-        timestamps: false
+        timestamps: true
     });
 
     return about;
