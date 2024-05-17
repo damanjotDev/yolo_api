@@ -108,7 +108,6 @@ roomService.getRooms = async (payload) => {
         }
     ]
 
-    query['raw'] = true;
     query['distinct']= true
     const rooms = await roomModel.findAndCountAll(query);
     

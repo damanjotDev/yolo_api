@@ -39,7 +39,7 @@ module.exports = function (connection) {
             defaultValue: []
         },
     }, {
-        timestamps: false
+        timestamps: true
     });
 
     return posts;
